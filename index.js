@@ -9,6 +9,8 @@ const home = process.env.HOME;
 const defaultConfigPath = home + '/.kube/config';
 const probablyMergingPath = process.cwd() + '/config';
 
+const replaceTilda = path => path.replace('~',process.cwd());
+
 const start = async () => {
 
     const select = new Select({
@@ -20,12 +22,13 @@ const start = async () => {
     const action = await select.run();
 
 
-    const {configPath} = await prompt({
+    let {configPath} = await prompt({
         type: 'input',
         name: 'configPath',
         message: 'Path to current kube config?',
         initial: defaultConfigPath,
     });
+    configPath = replaceTilda(configPath);
 
     const configFile = await readFile(configPath).catch(() => {
         console.error('Kubeconfig file not found');
@@ -44,15 +47,17 @@ const start = async () => {
 
     if(action === 'merge') {
 
-        const {mergingPath} = await prompt({
+        let {mergingPath} = await prompt({
             type: 'input',
             name: 'mergingPath',
             message: 'Path to config to merge?',
             initial: probablyMergingPath,
         });
 
+        mergingPath = replaceTilda(mergingPath);
+
         const mergingFile = await readFile(mergingPath).catch(() => {
-            console.error('Kubeconfig file not found');
+            console.error('Kubeconfig file to merge not found');
             process.exit(1);
         });
 
@@ -60,7 +65,7 @@ const start = async () => {
         try {
             mergingObj = yaml.parse(mergingFile.toString());
         } catch(err) {
-            console.error('Kubeconfig file is corrupted');
+            console.error('Kubeconfig file to merge is corrupted');
             process.exit(1);
         }
 
