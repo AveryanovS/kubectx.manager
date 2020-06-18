@@ -112,7 +112,7 @@ const start = async () => {
     }
 
     const newConfigYaml = yaml.stringify(configObj);
-    // await writeFile(configPath, newConfigYaml);
+    await writeFile(configPath, newConfigYaml);
     console.log('Config file updated!');
 };
 
