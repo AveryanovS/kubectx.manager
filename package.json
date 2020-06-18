@@ -4,7 +4,7 @@
   "description": "Kubectx contexts manager",
   "main": "index.js",
   "bin": {
-    "kubemanager": "index.js"
+    "kubemanager": "./cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -116,7 +116,9 @@ const start = async () => {
     console.log('Config file updated!');
 };
 
-start().catch(error => {
-    console.error(error);
-    process.exit(1);
-});
+module.exports = () => {
+    start().catch(error => {
+        console.error(error);
+        process.exit(1);
+    });
+}
