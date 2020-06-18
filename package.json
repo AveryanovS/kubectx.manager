@@ -1,0 +1,26 @@
+{
+  "name": "kubectx.manager",
+  "version": "1.0.0",
+  "description": "Kubectx contexts manager",
+  "main": "index.js",
+  "bin": {
+    "kubemanager": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AveryanovS/kubectx.manager.git"
+  },
+  "author": "AveryanovS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AveryanovS/kubectx.manager/issues"
+  },
+  "homepage": "https://github.com/AveryanovS/kubectx.manager#readme",
+  "dependencies": {
+    "enquirer": "^2.3.5",
+    "yaml": "^1.10.0"
+  }
+}
