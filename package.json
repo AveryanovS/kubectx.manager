@@ -21,6 +21,6 @@
   "homepage": "https://github.com/AveryanovS/kubectx.manager#readme",
   "dependencies": {
     "enquirer": "^2.3.5",
-    "yaml": "^1.10.0"
+    "yaml": "^2.2.2"
   }
 }
